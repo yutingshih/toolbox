@@ -1,0 +1,17 @@
+#%Module1.0
+## GCC modulefile
+
+proc ModuleHelp { } {
+    puts stderr "set up environment for gcc $version"
+}
+
+module-whatis "set up environment for gcc $version"
+
+# prereq
+
+conflict    gcc
+
+set             version             6.3.0
+set             root                ${HOME}
+prepend-path    PATH                $root/bin
+prepend-path    LD_LIBRARY_PATH     $root/lib
