@@ -1,0 +1,13 @@
+#%Module1.0
+## APP Modulefile
+
+proc ModuleHelp { } {
+    puts stderr "set up environment for [module-info name]"
+}
+
+module-whatis   "set up environment for [module-info name]"
+
+set             root               ${APPDIR}
+prepend-path    PATH               $root/bin
+
+conflict app
