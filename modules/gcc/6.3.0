@@ -1,0 +1,14 @@
+#%Module1.0
+## GCC modulefile
+
+proc ModuleHelp { } {
+    puts stderr "set up environment for [module-info name]"
+}
+
+module-whatis   "set up environment for [module-info name]"
+
+set             root               /home/ting/.local/gcc-6.3.0
+prepend-path    PATH               $root/bin
+prepend-path    LD_LIBRARY_PATH    $root/lib
+
+conflict        gcc
