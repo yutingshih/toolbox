@@ -6,10 +6,10 @@ TOPDIR=${2:-${HOME}}
 SRCDIR=${TOPDIR}/gcc-${VER}
 BLDDIR=${TOPDIR}/gcc-${VER}/build
 APPDIR=${3:-${SRCDIR}}
-MODULE=modules/gcc/${VER}
+MODULE=../modules/gcc/${VER}
 
 if [ ! -f ${MODULE} ]; then 
-    cp modules/gcc/sample ${MODULE}
+    cp ../modules/gcc/sample ${MODULE}
     sed -i "s~\${APPDIR}~${APPDIR}~g" ${MODULE}
     echo "Modulefile created"
 else
@@ -23,7 +23,7 @@ unset LIBRARY_PATH CPATH C_INCLUDE_PATH PKG_CONFIG_PATH CPLUS_INCLUDE_PATH INCLU
 cd ${SRCDIR} && ${SRCDIR}/contrib/download_prerequisites
 
 mkdir -p ${BLDDIR} && cd ${BLDDIR}
-${SRCDIR}/configure --prefix=${APPDIR} --enable-languages=c,c++,fortran --disable-multilib
+${SRCDIR}/configure --prefix=${APPDIR} --enable-languages=c,c++ --disable-multilib
 make -j $(nproc)
 make install
 
